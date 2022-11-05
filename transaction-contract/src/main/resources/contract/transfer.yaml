@@ -173,7 +173,7 @@ components:
           $ref: '#/components/schemas/Amount'
         availableBalance:
           $ref: '#/components/schemas/Amount'
-        blockecAccount:
+        blockedAccount:
           $ref: '#/components/schemas/Amount'
         currencyCode:
           $ref: '#/components/schemas/CurrencyCode'
@@ -213,14 +213,13 @@ components:
     AccountStatus:
       type: string
       description: Account status
-      enum: [ACTIVE|BLOCKED]
+      enum: [ACTIVE, BLOCKED]
       example: ACTIVE
     Amount:
       type: string
       description: Amount in minor units
       pattern: '[1-9]{1}[0-9]{0,16}'
       example: 10232
-
 
     TransferId:
       type: string
@@ -265,7 +264,7 @@ components:
     TransferPriority:
       type: string
       description: Describes if a transfer is urgent. Extra charges may apply if transfer is marked as URGENT
-      enum: [NORMAL|URGENT]
+      enum: [NORMAL, URGENT]
       example: NORMAL
     TransferStatus:
       type: string
