@@ -21,6 +21,7 @@
     <modules>
         <module>transaction-springboot</module>
         <module>transaction-contract</module>
+        <module>transaction-database</module>
     </modules>
 
     <properties>
@@ -29,6 +30,9 @@
         <swagger-annotations.version>2.2.6</swagger-annotations.version>
 
         <openapi-generator-maven-plugin.version>6.2.0</openapi-generator-maven-plugin.version>
+        <jackson-databind.version>0.2.4</jackson-databind.version>
+        <h2.version>2.1.214</h2.version>
+        <liquibase-core.version>4.17.2</liquibase-core.version>
     </properties>
 
     <dependencyManagement>
@@ -36,6 +40,11 @@
             <dependency>
                 <groupId>com.assignment</groupId>
                 <artifactId>transaction-contract</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.assignment</groupId>
+                <artifactId>transaction-database</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
@@ -52,8 +61,20 @@
             <dependency>
                 <groupId>org.openapitools</groupId>
                 <artifactId>jackson-databind-nullable</artifactId>
-                <version>0.2.4</version>
+                <version>${jackson-databind.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${h2.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-core</artifactId>
+                <version>${liquibase-core.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
