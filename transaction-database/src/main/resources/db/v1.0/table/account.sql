@@ -4,7 +4,7 @@
 create table ${schema}.account
 (
     id                uuid   default random_uuid() primary key,
-    account_id        uuid   not null,
+    account_id        text   not null,
     customer_id       uuid   not null,
     balance           bigint not null,
     blocked_amount    bigint default 0,
@@ -13,8 +13,8 @@ create table ${schema}.account
     account_type      text,
     name              text,
     account_code      text,
-    creation_date     timestamp with time zone,
-    date_last_updated timestamp with time zone,
+    creation_date     timestamp with time zone default current_timestamp,
+    date_last_updated timestamp with time zone default current_timestamp,
     foreign key (customer_id) references ${schema}.customer(id)
 );
 --rollback drop table ${schema}.account;

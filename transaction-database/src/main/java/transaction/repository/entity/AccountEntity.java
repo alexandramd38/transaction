@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity(name = "account")
@@ -15,9 +16,10 @@ public class AccountEntity {
       updatable = false,
       nullable = false,
       columnDefinition = "uuid default random_uuid()")
+  @GeneratedValue(generator = "UUID")
   private UUID id;
 
-  private UUID accountId;
+  private String accountId;
   private UUID customerId;
   private BigInteger balance;
   private BigInteger blockedAmount;
@@ -27,7 +29,7 @@ public class AccountEntity {
   private String name;
   private String accountCode;
   private Timestamp creationDate;
-  private Timestamp dataLastUpdated;
+  private Timestamp dateLastUpdated;
 
   public UUID getId() {
     return id;
@@ -37,11 +39,11 @@ public class AccountEntity {
     this.id = id;
   }
 
-  public UUID getAccountId() {
+  public String getAccountId() {
     return accountId;
   }
 
-  public void setAccountId(UUID accountId) {
+  public void setAccountId(String accountId) {
     this.accountId = accountId;
   }
 
@@ -117,11 +119,11 @@ public class AccountEntity {
     this.creationDate = creationDate;
   }
 
-  public Timestamp getDataLastUpdated() {
-    return dataLastUpdated;
+  public Timestamp getDateLastUpdated() {
+    return dateLastUpdated;
   }
 
-  public void setDataLastUpdated(Timestamp dataLastUpdated) {
-    this.dataLastUpdated = dataLastUpdated;
+  public void setDateLastUpdated(Timestamp dateLastUpdated) {
+    this.dateLastUpdated = dateLastUpdated;
   }
 }

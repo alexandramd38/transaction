@@ -100,7 +100,7 @@ components:
       in: path
       schema:
         type: string
-        format: UUID
+        pattern: "[a-zA-Z0-9-]{10,50}"
       required: true
 
   schemas:
@@ -203,7 +203,7 @@ components:
     AccountId:
       type: string
       description: Unique identifier of the account
-      format: UUID
+      pattern: "[a-zA-Z0-9-]{10,50}"
       example: 'ddfab0da-5c9b-11ed-9b6a-0242ac120002'
     AccountName:
       type: string
