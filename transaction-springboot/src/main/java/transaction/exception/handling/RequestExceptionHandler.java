@@ -15,7 +15,6 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
-import transaction.exception.AccountDetailsNotFoundException;
 
 @ControllerAdvice
 public class RequestExceptionHandler {
@@ -39,16 +38,5 @@ public class RequestExceptionHandler {
     fault.setDateTime(OffsetDateTime.now(UTC));
     logger.warn("Request processing failed due to validation errors: " + fault);
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(fault);
-  }
-
-  @ExceptionHandler(AccountDetailsNotFoundException.class)
-  public ResponseEntity<Fault> handleAccountDetailsNotFoundException(
-      AccountDetailsNotFoundException exception) {
-    logger.warn("Account details are not found. " + exception.getMessage());
-    var fault = new Fault();
-    fault.setMessage("Invalid accountId");
-    fault.setCode("4001");
-    fault.setDateTime(OffsetDateTime.now(UTC));
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(fault);
   }
 }

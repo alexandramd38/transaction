@@ -4,7 +4,7 @@
 create table ${schema}.account
 (
     id                uuid   default random_uuid() primary key,
-    account_id        text   not null,
+    account_id        text   not null unique,
     customer_id       uuid   not null,
     balance           bigint not null,
     blocked_amount    bigint default 0,

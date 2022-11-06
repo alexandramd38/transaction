@@ -9,6 +9,7 @@ import java.math.BigInteger;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 import org.springframework.stereotype.Component;
+import transaction.TransferStatus;
 import transaction.repository.entity.TransferEntity;
 
 @Component
@@ -23,7 +24,7 @@ public class TransferConverter {
     transferEntity.setSourceAccountId(transferBodyV1.getSourceAccount());
     transferEntity.setBeneficiaryAccountId(transferBodyV1.getBeneficiaryAccount());
     transferEntity.setAmount(new BigInteger(transferBodyV1.getAmount()));
-    transferEntity.setStatus("INITIATED");
+    transferEntity.setStatus(TransferStatus.INITIATED.name());
     transferEntity.setCurrencyCode(transferBodyV1.getCurrencyCode());
     transferEntity.setSubmissionTimestamp(transferBodyV1.getDateTime());
     transferEntity.setCreationTimestamp(

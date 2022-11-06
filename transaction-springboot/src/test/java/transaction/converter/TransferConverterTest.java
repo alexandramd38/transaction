@@ -13,6 +13,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import transaction.TransferStatus;
 import transaction.repository.entity.TransferEntity;
 
 @ExtendWith(MockitoExtension.class)
@@ -25,7 +26,6 @@ class TransferConverterTest {
   private static final String AMOUNT = "1000";
   private static final String CURRENCY_CODE = "EUR";
   private static final String DATE_TIME = "2022-12-06 13:12:11";
-  private static final String STATUS = "INITIATED";
 
   @Mock private InitiateTransferBodyV1 initiateTransferBodyV1;
   @Mock private TransferEntity entity;
@@ -42,7 +42,7 @@ class TransferConverterTest {
     assertEquals(SOURCE_ACCOUNT, transferEntity.getSourceAccountId());
     assertEquals(BENEFICIARY_ACCOUNT, transferEntity.getBeneficiaryAccountId());
     assertEquals(new BigInteger(AMOUNT), transferEntity.getAmount());
-    assertEquals(STATUS, transferEntity.getStatus());
+    assertEquals(TransferStatus.INITIATED.name(), transferEntity.getStatus());
     assertEquals(CURRENCY_CODE, transferEntity.getCurrencyCode());
     assertEquals(DATE_TIME, transferEntity.getSubmissionTimestamp());
     assertNotNull(transferEntity.getCreationTimestamp());
@@ -60,7 +60,7 @@ class TransferConverterTest {
     assertEquals(SOURCE_ACCOUNT, responseV1.getSourceAccount());
     assertEquals(BENEFICIARY_ACCOUNT, responseV1.getBeneficiaryAccount());
     assertEquals(DATE_TIME, responseV1.getCreationDateTime());
-    assertEquals(STATUS, responseV1.getStatus());
+    assertEquals(TransferStatus.TRANSFERRED.name(), responseV1.getStatus());
   }
 
   private void mockInitiateTransferBodyV1() {
@@ -80,6 +80,6 @@ class TransferConverterTest {
     when(entity.getSourceAccountId()).thenReturn(SOURCE_ACCOUNT);
     when(entity.getBeneficiaryAccountId()).thenReturn(BENEFICIARY_ACCOUNT);
     when(entity.getCreationTimestamp()).thenReturn(DATE_TIME);
-    when(entity.getStatus()).thenReturn(STATUS);
+    when(entity.getStatus()).thenReturn(TransferStatus.TRANSFERRED.name());
   }
 }
