@@ -3,8 +3,7 @@ package transaction.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 import com.transfer.api.model.InitiateTransferBodyV1;
 import com.transfer.api.model.TransferResponseV1;
@@ -15,6 +14,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import transaction.TransferStatus;
 import transaction.converter.TransferConverter;
 import transaction.repository.TransferRepository;
 import transaction.repository.entity.TransferEntity;
@@ -48,6 +48,7 @@ class TransferServiceTest {
     TransferResponseV1 responseV1 = transferService.initiateTransfer(initiateTransferBodyV1);
 
     assertEquals(transferResponseV1, responseV1);
+    verify(transferEntity).setStatus(TransferStatus.TRANSFERRED.name());
   }
 
   private void mockInitiateTransferBodyV1() {

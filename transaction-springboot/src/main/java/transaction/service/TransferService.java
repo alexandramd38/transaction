@@ -6,6 +6,7 @@ import java.math.BigInteger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import transaction.TransferStatus;
 import transaction.converter.TransferConverter;
 import transaction.repository.TransferRepository;
 import transaction.repository.entity.TransferEntity;
@@ -44,6 +45,7 @@ public class TransferService {
       String beneficiaryAccountId) {
     accountService.moveMoney(
         sourceAccountId, beneficiaryAccountId, new BigInteger(transferBodyV1.getAmount()));
+    entity.setStatus(TransferStatus.TRANSFERRED.name());
     return transferRepository.save(entity);
   }
 }
