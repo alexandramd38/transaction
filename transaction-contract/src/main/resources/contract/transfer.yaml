@@ -173,7 +173,7 @@ components:
           $ref: '#/components/schemas/Amount'
         availableBalance:
           $ref: '#/components/schemas/Amount'
-        blockedAccount:
+        blockedAmount:
           $ref: '#/components/schemas/Amount'
         currencyCode:
           $ref: '#/components/schemas/CurrencyCode'

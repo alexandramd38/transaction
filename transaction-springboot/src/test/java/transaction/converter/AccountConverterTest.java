@@ -40,7 +40,7 @@ class AccountConverterTest {
     assertEquals(CUSTOMER_ID.toString(), accountBalanceV1.getCustomerId());
     assertEquals(AMOUNT, accountBalanceV1.getAccountBalance());
     assertEquals(AMOUNT, accountBalanceV1.getAvailableBalance());
-    assertEquals("0", accountBalanceV1.getBlockedAccount());
+    assertEquals("0", accountBalanceV1.getBlockedAmount());
     assertEquals(CURRENCY_CODE, accountBalanceV1.getCurrencyCode());
     assertEquals(AccountStatus.ACTIVE, accountBalanceV1.getAccountStatus());
     assertEquals(TIMESTAMP.toString(), accountBalanceV1.getTimestamp());

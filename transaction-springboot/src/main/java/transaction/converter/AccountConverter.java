@@ -16,7 +16,7 @@ public class AccountConverter {
     account.setAccountBalance(accountEntity.getBalance().toString());
     account.setAvailableBalance(
         accountEntity.getBalance().subtract(accountEntity.getBlockedAmount()).toString());
-    account.setBlockedAccount(accountEntity.getBlockedAmount().toString());
+    account.setBlockedAmount(accountEntity.getBlockedAmount().toString());
     account.setCurrencyCode(accountEntity.getCurrencyCode());
     account.setAccountStatus(AccountStatus.fromValue(accountEntity.getStatus()));
     account.setTimestamp(accountEntity.getCreationDate().toString());
