@@ -4,7 +4,7 @@ databaseChangeLog:
   - include:
       file: db/v1.0/table/account.sql
   - include:
-      file: db/v1.0/table/transaction.sql
+      file: db/v1.0/table/transfer.sql
   - include:
       file: db/v1.0/static_data/insert_customer.sql
   - include:

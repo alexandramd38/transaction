@@ -33,6 +33,7 @@
         <jackson-databind.version>0.2.4</jackson-databind.version>
         <h2.version>2.1.214</h2.version>
         <liquibase-core.version>4.17.2</liquibase-core.version>
+        <javax-persistence-api.version>2.2</javax-persistence-api.version>
     </properties>
 
     <dependencyManagement>
@@ -74,7 +75,11 @@
                 <artifactId>liquibase-core</artifactId>
                 <version>${liquibase-core.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>javax.persistence</groupId>
+                <artifactId>javax.persistence-api</artifactId>
+                <version>${javax-persistence-api.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
