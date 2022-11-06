@@ -6,8 +6,8 @@ import java.math.BigInteger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import transaction.TransferStatus;
 import transaction.converter.TransferConverter;
+import transaction.model.TransferStatus;
 import transaction.repository.TransferRepository;
 import transaction.repository.entity.TransferEntity;
 

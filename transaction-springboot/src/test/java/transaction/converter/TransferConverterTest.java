@@ -13,7 +13,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import transaction.TransferStatus;
+import transaction.model.TransferStatus;
 import transaction.repository.entity.TransferEntity;
 
 @ExtendWith(MockitoExtension.class)

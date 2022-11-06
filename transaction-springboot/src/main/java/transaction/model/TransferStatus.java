@@ -1,4 +1,4 @@
-package transaction;
+package transaction.model;
 
 public enum TransferStatus {
   INITIATED,

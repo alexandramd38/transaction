@@ -9,7 +9,7 @@ import java.math.BigInteger;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 import org.springframework.stereotype.Component;
-import transaction.TransferStatus;
+import transaction.model.TransferStatus;
 import transaction.repository.entity.TransferEntity;
 
 @Component
