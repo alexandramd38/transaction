@@ -2,6 +2,7 @@
   <tr>
     <td><a href="overview.md">Previous</a></td>
     <td><a href="../README.md">Home</a></td>
+    <td><a href="features.md">Next</a> </td>
   </tr>
 </table>
 
@@ -11,6 +12,8 @@ Transfer service exposes 2 endpoints:
 
 - get account balance to retrieve the account details for a given account id
 - initiate transfer API to transfer money between 2 accounts already registered in the system, having the same currency code
+
+To avoid differences between internal and external services, amounts are defined in minor units, as described by _ISO4217_ standard
 
 Transfer Service APIs are described in the following image:
 

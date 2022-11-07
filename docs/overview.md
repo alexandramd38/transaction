@@ -23,6 +23,11 @@ Application starts on port _8089_, based on the following property defined in ap
 server.port=8089
 ```
 
+**localhost resources:**
+- Database: ```http://localhost:8089/h2-console```
+- API documentation: ```http://localhost:8089/swagger-ui/index.html```
+
+
 ### Testing
 Application was tested using unit and integration tests.
 To cover the testing for concurrent transactions, the application was tested with integration tests, which send in parallel multiple requests to the application.
