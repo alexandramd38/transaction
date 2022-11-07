@@ -17,3 +17,4 @@
 - APIs for batch transfers
 - Include commissions / charges based on transfer priority
 - Include logic for idempotent transfers
+- Introduce APIs authentication
