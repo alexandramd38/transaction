@@ -30,13 +30,13 @@ public class AccountExceptionHandler {
   }
 
   @ExceptionHandler(InsufficientFundsException.class)
-  public ResponseEntity<Fault> handleAccountDetailsNotFoundException(
+  public ResponseEntity<Fault> handleInsufficientFundsException(
       InsufficientFundsException exception) {
     logger.warn(exception.getMessage());
     var fault = new Fault();
     fault.setMessage("Insufficient funds");
     fault.setCode("4002");
     fault.setDateTime(OffsetDateTime.now(UTC));
-    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(fault);
+    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(fault);
   }
 }
