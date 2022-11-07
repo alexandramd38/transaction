@@ -31,6 +31,10 @@ public class TransferController implements TransferApi {
       String correlationId) {
     logger.info("Received initiate transfer request: " + initiateTransferBodyV1);
     TransferResponseV1 response = transferService.initiateTransfer(initiateTransferBodyV1);
+    logger.info(
+        "Request for reference = "
+            + initiateTransferBodyV1.getReference()
+            + " was successfully processed");
     return ResponseEntity.status(CREATED).body(response);
   }
 }

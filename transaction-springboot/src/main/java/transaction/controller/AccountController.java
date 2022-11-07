@@ -21,7 +21,9 @@ public class AccountController implements AccountApi {
 
   public ResponseEntity<AccountBalanceV1> getAccountBalance(
       String jwt, String accountId, String correlationId) {
-    logger.info("Received request for account id = " + accountId);
-    return ResponseEntity.ok(accountService.getAccountBalance(accountId));
+    logger.info("Received request for accountId = " + accountId);
+    var response = accountService.getAccountBalance(accountId);
+    logger.info("Request for accountId = " + accountId + " was successfully processed");
+    return ResponseEntity.ok(response);
   }
 }
