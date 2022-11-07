@@ -8,9 +8,12 @@
 ## APIs definition
 
 Transfer service exposes 2 endpoints:
+
 - initiate transfer API to transfer money between 2 accounts already registered in the system, having the same currency code
 - get account balance to retrieve the account details for a given account id
 
 Transfer Service APIs are described in the following image:
 
 ![transfer-apis](images/transfer-apis.jpg)
+
+API definition is exposed by the application at [/swagger-ui/index.html](http://localhost:8089/swagger-ui/index.html) endpoint.

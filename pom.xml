@@ -34,6 +34,7 @@
         <h2.version>2.1.214</h2.version>
         <liquibase-core.version>4.17.2</liquibase-core.version>
         <javax-persistence-api.version>2.2</javax-persistence-api.version>
+        <springdoc-openapi-ui.version>1.6.12</springdoc-openapi-ui.version>
     </properties>
 
     <dependencyManagement>
@@ -79,6 +80,11 @@
                 <groupId>javax.persistence</groupId>
                 <artifactId>javax.persistence-api</artifactId>
                 <version>${javax-persistence-api.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-ui</artifactId>
+                <version>${springdoc-openapi-ui.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

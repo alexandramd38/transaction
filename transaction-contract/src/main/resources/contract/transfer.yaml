@@ -8,7 +8,7 @@ paths:
   /transfer:
     post:
       tags:
-        - initiateTransfer
+        - transfer
       summary: Initiate transfer
       operationId: initiateTransfer
       parameters:
