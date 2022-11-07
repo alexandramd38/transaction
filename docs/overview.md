@@ -27,6 +27,10 @@ server.port=8089
 - Database: ```http://localhost:8089/h2-console```
 - API documentation: ```http://localhost:8089/swagger-ui/index.html```
 
+**Steps to run the application using docker:**
+- in project directory, build the project: ```docker build -t transaction .```
+- enable port forwarding ```docker run -p8099:8089 transaction```
+- test application by accessing API documentation / swagger UI - ```http://localhost:8099/swagger-ui/index.html```
 
 ### Testing
 Application was tested using unit and integration tests.
