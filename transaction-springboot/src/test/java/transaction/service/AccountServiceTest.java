@@ -70,7 +70,7 @@ class AccountServiceTest {
 
     verify(accountRepository).getAccountEntityByAccountIdForUpdate(ACCOUNT_ID);
     verify(accountRepository).getAccountEntityByAccountIdForUpdate(BENEFICIARY_ACCOUNT_ID);
-    verify(accountEntity, times(2)).getBalance();
+    verify(accountEntity, times(3)).getBalance();
     verify(accountEntity).getBlockedAmount();
 
     verify(accountEntity).setBalance(BigInteger.valueOf(0));

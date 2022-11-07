@@ -2,30 +2,26 @@ package transaction.service;
 
 import com.transfer.api.model.InitiateTransferBodyV1;
 import com.transfer.api.model.TransferResponseV1;
-import java.math.BigInteger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import transaction.converter.TransferConverter;
-import transaction.model.TransferStatus;
 import transaction.repository.TransferRepository;
-import transaction.repository.entity.TransferEntity;
 
 @Service
 public class TransferService {
 
   private final TransferConverter transferConverter;
   private final TransferRepository transferRepository;
-  private final AccountService accountService;
+  private final MoneyTransferService moneyTransferService;
 
   @Autowired
   public TransferService(
       TransferConverter transferConverter,
       TransferRepository transferRepository,
-      AccountService accountService) {
+      MoneyTransferService moneyTransferService) {
     this.transferConverter = transferConverter;
     this.transferRepository = transferRepository;
-    this.accountService = accountService;
+    this.moneyTransferService = moneyTransferService;
   }
 
   public TransferResponseV1 initiateTransfer(InitiateTransferBodyV1 transferBodyV1) {
@@ -34,18 +30,7 @@ public class TransferService {
     var beneficiaryAccountId = transferBodyV1.getBeneficiaryAccount().toString();
 
     return transferConverter.convert(
-        transfer(transferBodyV1, entity, sourceAccountId, beneficiaryAccountId));
-  }
-
-  @Transactional
-  protected TransferEntity transfer(
-      InitiateTransferBodyV1 transferBodyV1,
-      TransferEntity entity,
-      String sourceAccountId,
-      String beneficiaryAccountId) {
-    accountService.moveMoney(
-        sourceAccountId, beneficiaryAccountId, new BigInteger(transferBodyV1.getAmount()));
-    entity.setStatus(TransferStatus.TRANSFERRED.name());
-    return transferRepository.save(entity);
+        moneyTransferService.transfer(
+            transferBodyV1, entity, sourceAccountId, beneficiaryAccountId));
   }
 }

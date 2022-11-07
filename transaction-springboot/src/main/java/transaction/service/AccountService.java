@@ -2,6 +2,8 @@ package transaction.service;
 
 import com.transfer.api.model.AccountBalanceV1;
 import java.math.BigInteger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import transaction.converter.AccountConverter;
@@ -12,6 +14,7 @@ import transaction.repository.entity.AccountEntity;
 
 @Service
 public class AccountService {
+  private static final Logger logger = LoggerFactory.getLogger(AccountService.class);
 
   private final AccountConverter accountConverter;
   private final AccountRepository accountRepository;
@@ -34,6 +37,7 @@ public class AccountService {
 
   public void moveMoney(
       String sourceAccountId, String beneficiaryAccountId, BigInteger amountToTransfer) {
+
     var sourceAccount =
         accountRepository
             .getAccountEntityByAccountIdForUpdate(sourceAccountId)
@@ -49,6 +53,13 @@ public class AccountService {
                 () ->
                     new AccountDetailsNotFoundException(
                         "Beneficiary AccountId=" + beneficiaryAccountId + " not found."));
+
+    logger.info(
+        "Account details before processing. Source account balance = "
+            + sourceAccount.getBalance()
+            + ". Beneficiary account balance = "
+            + beneficiaryAccount.getBalance());
+
     var sourceAvailableAmount =
         sourceAccount.getBalance().subtract(sourceAccount.getBlockedAmount());
 
@@ -59,7 +70,7 @@ public class AccountService {
               + "; amountToTransfer="
               + amountToTransfer);
     }
-    // update account
+
     sourceAccount.setBalance(sourceAccount.getBalance().subtract(amountToTransfer));
     beneficiaryAccount.setBalance(beneficiaryAccount.getBalance().add(amountToTransfer));
 
